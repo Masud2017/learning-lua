@@ -94,3 +94,70 @@ local exntededClass2Instance = ExtendedClass2.new()
 exntededClass2Instance.baseFunction()
 
 
+
+
+-- Adding abstract function
+
+local BClass = {} -- BaseClass
+
+BClass.new = function()
+    local self = {}
+
+    function self.baseFunction()
+        -- error("I am abstract!!")
+    end
+
+    return self
+end
+
+local ExtendedClassAbstract1 = {}
+ExtendedClassAbstract1.new = function()
+    local self = BClass.new()
+    return self
+end
+
+local ExtendedClassAbstract2 = {}
+ExtendedClassAbstract2.new = function()
+    local self = BClass.new()
+
+    function self.baseFunction()
+        print("Inside overriding function")
+    end
+
+    return self
+end
+
+local ExtendedClassAbstract1Instance = ExtendedClassAbstract1.new()
+ExtendedClassAbstract1Instance.baseFunction()
+
+local ExtendedClassAbstract2Instance = ExtendedClassAbstract2.new()
+ExtendedClassAbstract2Instance.baseFunction()
+
+
+
+-- Meta class
+Rectangle = {area = 0, length = 0, breadth = 0}
+
+-- Derived class method new
+
+function Rectangle:new (o, length,breadth)
+    o = o or {}
+    
+    setmetatable(o,self)
+
+    self.__index = self
+    self.length = length or 0
+    self.breadth = breadth or 0
+    self.area = length * breadth
+
+    return o
+end
+
+function Rectangle:printArea()
+    print("The are of Rectangle is : ",self.area)
+end
+
+object = Rectangle:new(nil,10,20)
+print(object.o)
+
+object:printArea()
