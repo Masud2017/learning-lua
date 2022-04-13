@@ -67,8 +67,30 @@ ExtendedClass1.new = function()
     function self.baseFunction()
         print("Inside overriding function")
     end
+
+    return self
 end
 
 
+local ExtendedClass2 = {}
+
+ExtendedClass2.new = function()
+    local self = BaseClass.new()
+    local parentBaseFunction = self.baseFunction
+
+    function self.baseFunction()
+        parentBaseFunction()
+        print("Inside overriding function class 2")
+    end
+
+    return self
+end
+
+
+local exntededClass1Instance = ExtendedClass1.new()
+exntededClass1Instance.baseFunction()
+
+local exntededClass2Instance = ExtendedClass2.new()
+exntededClass2Instance.baseFunction()
 
 
