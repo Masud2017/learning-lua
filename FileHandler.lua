@@ -1,6 +1,6 @@
-FileClass = {}
+local FileClass = {}
 
-FileClass.new = function ()
+FileHandler.new = function ()
     local self = {}
     
     self.createFile = function(file_name)
@@ -29,9 +29,14 @@ FileClass.new = function ()
 
 end
 
-local fileInstance = FileClass.new()
+-- local fileInstance = FileHandler.new()
 
-fileInstance.createFile("log.txt")
-fileInstance.writeSomething("Hello world this is my first lua file handling program")
-fileInstance.readSomething()
-fileInstance.closeFilePointer()
+-- collectgarbage("collect")
+-- print("Space that this program is taking while run time : ",collectgarbage("count"),"KB")
+
+-- fileInstance.createFile("log.txt")
+-- fileInstance.writeSomething("Hello world this is my first lua file handling program")
+-- fileInstance.readSomething()
+-- fileInstance.closeFilePointer()
+
+return FileHandler

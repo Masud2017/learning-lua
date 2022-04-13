@@ -161,3 +161,15 @@ object = Rectangle:new(nil,10,20)
 print(object.o)
 
 object:printArea()
+
+
+require("FileHandler")
+
+collectgarbage("collect")
+print("Space that this program is taking while run time : ",collectgarbage("count"),"KB")
+local fileInstance = FileClass.new()
+
+fileInstance.createFile("log.txt")
+fileInstance.writeSomething("Hello world this is my first lua file handling program")
+-- fileInstance.readSomething()
+fileInstance.closeFilePointer()
